@@ -17,10 +17,10 @@ public class BallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnTriggerEnter2D (Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -36,11 +36,16 @@ public class BallMovement : MonoBehaviour
         {
             myRB.velocity = new Vector2(myRB.velocity.x, myRB.velocity.y * -1);
         }
-        
+
         if (collision.gameObject.tag == "Block")
         {
             myRB.velocity = new Vector2(myRB.velocity.x, myRB.velocity.y * -1);
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Void")
+        {
+            collision.GetComponent<GameOver>().PlayAgain();
         }
     }
 }
