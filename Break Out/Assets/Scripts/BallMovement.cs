@@ -39,13 +39,16 @@ public class BallMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "Block")
         {
+            ScoreManager manager = FindObjectOfType<ScoreManager>();
+            manager.ScorePoint();
             myRB.velocity = new Vector2(myRB.velocity.x, myRB.velocity.y * -1);
             Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "Void")
         {
-            collision.GetComponent<GameOver>().PlayAgain();
+            ScoreManager manager = FindObjectOfType<ScoreManager>();
+            manager.PlayAgain();
         }
     }
 }
