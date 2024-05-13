@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WallHorizontal
   - WallVertical
+  - Block
   layers:
   - Default
   - TransparentFX

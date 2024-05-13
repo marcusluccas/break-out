@@ -36,5 +36,11 @@ public class BallMovement : MonoBehaviour
         {
             myRB.velocity = new Vector2(myRB.velocity.x, myRB.velocity.y * -1);
         }
+        
+        if (collision.gameObject.tag == "Block")
+        {
+            myRB.velocity = new Vector2(myRB.velocity.x, myRB.velocity.y * -1);
+            Destroy(collision.gameObject);
+        }
     }
 }
