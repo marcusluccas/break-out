@@ -12,7 +12,6 @@ public class BallMovement : MonoBehaviour
     {
         myRB = GetComponent<Rigidbody2D>();
         myRB.velocity = Vector2.down * speed;
-        Debug.Log("oi");
     }
 
     // Update is called once per frame
@@ -21,11 +20,21 @@ public class BallMovement : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D (Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             myRB.velocity = new Vector2(myRB.velocity.x + collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, myRB.velocity.y * -1);
+        }
+
+        if (collision.gameObject.tag == "WallHorizontal")
+        {
+            myRB.velocity = new Vector2(myRB.velocity.x * -1, myRB.velocity.y);
+        }
+
+        if (collision.gameObject.tag == "WallVertical")
+        {
+            myRB.velocity = new Vector2(myRB.velocity.x, myRB.velocity.y * -1);
         }
     }
 }
